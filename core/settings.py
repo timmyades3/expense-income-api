@@ -45,12 +45,15 @@ INSTALLED_APPS = [
     'expenses.apps.ExpensesConfig',
     'income.apps.IncomeConfig',
     'rest_framework_simplejwt.token_blacklist',
+    'corsheaders',
+    'userstats.apps.UserstatsConfig',
 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -164,6 +167,7 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": datetime.timedelta(minutes=10),
     "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=1),
 }
+CORS_ALLOW_ALL_ORIGINS = True
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
